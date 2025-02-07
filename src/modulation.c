@@ -19,8 +19,8 @@ void modulate_fm(FMModulator *fm) {
 }
 
 void init_ssb_modulator(SSBModulator *ssb, float *input, float *output, float frequency, int usb, float sample_rate) {
-    init_table_oscillator(&ssb->osc, &ssb->carrier_i, &ssb->carrier_q, frequency, sample_rate);
-    init_hilbert(&ssb->hilbert, &input, &ssb->signal_i, &ssb->signal_q);
+    init_table_oscillator(&ssb->osc, ssb->carrier_i, ssb->carrier_q, frequency, sample_rate);
+    init_hilbert(&ssb->hilbert, input, ssb->signal_i, ssb->signal_q);
     ssb->output = output;
     ssb->usb = usb;
 }
