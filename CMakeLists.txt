@@ -17,7 +17,6 @@ add_custom_command(
     COMMAND cat "../include/transformer.h" >> ${MERGED_HEADER}
     COMMAND cat "../include/filter.h" >> ${MERGED_HEADER}
     COMMAND cat "../include/modulation.h" >> ${MERGED_HEADER}
-    COMMAND cat "../include/encoder.h" >> ${MERGED_HEADER}
     COMMAND cat "../include/sampler.h" >> ${MERGED_HEADER}
     DEPENDS ${HEADER_FILES}
     COMMENT "Merging headers into dsp.h"
