@@ -1,11 +1,12 @@
 #include "../include/oscillators.h"
-#include "../include/constants.h"
+#include "../include/common.h"
 
-void init_sine_oscillator(Oscillator *osc, float *output, float frequency, float sample_rate) {
+void init_sine_oscillator(Oscillator *osc, float *output, float *output2, float frequency, float sample_rate) {
     osc->phase = 0.0f;
     osc->phase_increment = (M_2PI * frequency) / sample_rate;
     osc->sample_rate = sample_rate;
     osc->output = output;
+    osc->output2 = output2;
 }
 
 void change_sine_oscillator_frequency(Oscillator *osc, float frequency) {
@@ -20,20 +21,22 @@ void compute_sine_oscillator_cos(Oscillator *osc) {
     *osc->output = cosf(osc->phase);
 }
 
+// Multipied output goes to output2, not the main one
 void compute_sine_oscillator_sin_multiplier(Oscillator *osc, float multiplier) {
-    *osc->output = sinf(osc->phase*multiplier);
+    float out = sinf(osc->phase*multiplier);
+    if(osc->output2 != NULL ) *osc->output2 = out;
+    else *osc->output = out;
 }
 
+// Multipied output goes to output2, not the main one
 void compute_sine_oscillator_cos_multiplier(Oscillator *osc, float multiplier) {
-    *osc->output = cosf(osc->phase*multiplier);
+    float out = cosf(osc->phase*multiplier);
+    if(osc->output2 != NULL ) *osc->output2 = out;
+    else *osc->output = out;
 }
 
 void advance_sine_oscillator(Oscillator *osc) {
     osc->phase = fmodf(osc->phase + osc->phase_increment, M_2PI);
-}
-
-void exit_sine_oscillator(Oscillator *osc) {
-    
 }
 
 void init_table_oscillator(TableOscillator *osc, float *output_sin, float *output_cos, float frequency, float sample_rate) {

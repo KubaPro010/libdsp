@@ -1,4 +1,4 @@
-#include "../include/constants.h"
+#include "../include/common.h"
 #include "../include/transformer.h"
 
 void compute_hilbert_coeffs(float* coeffs, int taps) {
@@ -12,13 +12,12 @@ void compute_hilbert_coeffs(float* coeffs, int taps) {
     }
 }
 
-void init_hilbert(HilbertTransformer* filter, float* input, float* output_i, float* output_q) {
+void init_hilbert(HilbertTransformer* filter, float* input, complex* output) {
     compute_hilbert_coeffs(filter->coeffs, HILBERT_TAPS);
     memset(filter->delay, 0, sizeof(filter->delay));
     filter->index = 0;
     filter->input = input;
-    filter->output_i = output_i;
-    filter->output_q = output_q;
+    filter->output = output;
 }
 
 void hilbert(HilbertTransformer* filter) {
@@ -37,6 +36,6 @@ void hilbert(HilbertTransformer* filter) {
 
     filter->index = (filter->index + 1) % HILBERT_TAPS;
 
-    *filter->output_i = i_sum;
-    *filter->output_q = q_sum;
+    filter->output->inphase = i_sum;
+    filter->output->quadrature = i_sum;
 }

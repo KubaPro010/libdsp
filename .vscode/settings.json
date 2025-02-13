@@ -6,7 +6,8 @@
         "dsp.h": "c",
         "math.h": "c",
         "modulation.h": "c",
-        "oscillators.h": "c"
+        "oscillators.h": "c",
+        "common.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

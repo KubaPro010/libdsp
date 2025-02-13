@@ -8,3 +8,4 @@ typedef struct
 
 void init_decimator(Decimator *filter, float *input, float *output, int ratio, float sampleRate);
 void decimate(Decimator *filter);
+inline void exit_decimator(Decimator *filter) {}

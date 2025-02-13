@@ -4,6 +4,8 @@ LibDSP is a digital signal processing library with these filters built-in:
 - High Pass Filter
 - Pre-Emphasis
 - De-Emphasis
+- PCL
+- PLL
 - FM Modulator
 - SSB Modulator
 - Sine Oscillator (sin, cos)

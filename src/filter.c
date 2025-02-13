@@ -1,5 +1,5 @@
 #include "../include/filter.h"
-#include "../include/constants.h"
+#include "../include/common.h"
 
 void reset_biquad(BiquadFilter* filter) {
     filter->y2 = 0;

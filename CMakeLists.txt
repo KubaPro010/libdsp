@@ -12,7 +12,7 @@ set(MERGED_HEADER ${CMAKE_BINARY_DIR}/dsp.h)
 add_custom_command(
     OUTPUT ${MERGED_HEADER}
     # COMMAND cat ${HEADER_FILES} >> ${MERGED_HEADER}
-    COMMAND cat "../include/constants.h" > ${MERGED_HEADER}
+    COMMAND cat "../include/common.h" > ${MERGED_HEADER}
     COMMAND cat "../include/oscillators.h" >> ${MERGED_HEADER}
     COMMAND cat "../include/transformer.h" >> ${MERGED_HEADER}
     COMMAND cat "../include/filter.h" >> ${MERGED_HEADER}
