@@ -78,7 +78,7 @@ void init_preemphasis(BiquadFilter *biquad, float *input, float *output, float t
 }
 
 void apply_biquad(BiquadFilter* filter) {
-    float out = filter->b0**filter->input + filter->b1*filter->x1 + filter->b2*filter->x2 + filter->y1*filter->a1 + filter->y2*filter->a2;
+    float out = filter->b0 * (*filter->input) + filter->b1 * filter->x1 + filter->b2 * filter->x2 + filter->y1 * filter->a1 + filter->y2 * filter->a2;
     filter->y2 = filter->y1;
     filter->y1 = out;
     filter->x2 = filter->x1;

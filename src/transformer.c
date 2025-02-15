@@ -37,5 +37,5 @@ void hilbert(HilbertTransformer* filter) {
     filter->index = (filter->index + 1) % HILBERT_TAPS;
 
     filter->output->inphase = i_sum;
-    filter->output->quadrature = i_sum;
+    filter->output->quadrature = q_sum;
 }

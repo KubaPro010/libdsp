@@ -23,7 +23,6 @@ typedef struct
     complex* output;
 } PhaseLockedLoop;
 
-
 void init_pcl(PhaseControlLoop *pcl, float bandwidth, float phase, float minPhase, float maxPhase, float freq, float minFreq, float maxFreq);
 void advance_pcl(PhaseControlLoop *pcl, float error);
 inline void exit_pcl(PhaseControlLoop *pcl);

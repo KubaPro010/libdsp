@@ -41,11 +41,11 @@ void init_pll(PhaseLockedLoop *pll, complex* input, complex* output, float bandw
 
 void pll(PhaseLockedLoop *pll) {
     pll->output->inphase = sinf(pll->pcl.phase);
-    pll->output->inphase = cosf(pll->pcl.phase);
+    pll->output->quadrature = cosf(pll->pcl.phase);
 
     float diff = atan2f(pll->input->quadrature, pll->input->inphase) - pll->pcl.phase;
     if(diff > M_PI) diff -= M_2PI;
     else if(diff <= - M_PI) diff += M_2PI; 
 
-    advance_pcl(&pll->pcl, diff)
+    advance_pcl(&pll->pcl, diff);
 }

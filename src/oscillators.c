@@ -71,8 +71,12 @@ void advance_table_oscillator(TableOscillator *osc) {
 }
 
 void exit_table_oscillator(TableOscillator *osc) {
-    free(osc->sine_table);
-    osc->sine_table = NULL;
-    free(osc->cosine_table);
-    osc->cosine_table = NULL;
+    if (osc->sine_table != NULL) {
+        free(osc->sine_table);
+        osc->sine_table = NULL;
+    }
+    if (osc->cosine_table != NULL) {
+        free(osc->cosine_table);
+        osc->cosine_table = NULL;
+    }
 }

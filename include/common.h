@@ -3,6 +3,8 @@
 #include <stddef.h>
 #include <string.h>
 
+#define DSP_VERSION 1.1
+
 typedef struct
 {
     float inphase;
